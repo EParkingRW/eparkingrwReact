@@ -7,7 +7,7 @@ import {
   DrawerOverlay,
   useDisclosure
 } from '@chakra-ui/core';
-import Sidebar from './sidebar';
+import Sidebar from './Sidebar';
 import { Menu } from '../icons';
 
 export default function MobileNav() {

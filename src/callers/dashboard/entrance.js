@@ -1,9 +1,9 @@
 import { getLayout } from '../../layouts/dashboard';
 import {Entrance} from "../../components/screens/entrance";
-import React, {Fragment} from "react";
+import React from "react";
+import Layout from "../../components/dashboard/Layout";
 
-const DashboardDocuments = () =><Fragment> <Entrance/></Fragment>;
+const DashboardDocuments = () =><Layout> <Entrance/></Layout>;
 
-DashboardDocuments.getLayout = getLayout;
 
 export default DashboardDocuments;

@@ -1,6 +1,6 @@
 import { Button, Flex, useColorModeValue } from '@chakra-ui/core';
-import ThemeToggle from '../theme-toggle';
-import MobileNav from './mobile-nav';
+import ThemeToggle from '../ThemeToggle';
+import MobileNav from './MobileNav';
 import {useContext} from "react";
 import StateContext from "../../components/context/StateContext";
 import {Link} from "react-router-dom";
@@ -25,7 +25,7 @@ export default function Header() {
       <Flex w="full" align="center" justify="center">
         <Flex w="full" align="center" justify="space-between">
           <Flex align="center">
-            <Link href="/dashboard" passHref>
+            <Link href="/dashboard">
               <Button as="a" variant="ghost" px={0} fontWeight="bold">
                 {pageTitle}
               </Button>

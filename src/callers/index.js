@@ -1,9 +1,9 @@
 import { Flex, Heading, Text, Button, Stack } from '@chakra-ui/core';
-import { getLayout } from '../layouts/default';
+import Default, { getLayout } from '../layouts/default';
 import { MY_APP } from '../utils/constants';
 
 
-const Home = () => {
+const Home_ = () => {
   return (
     <Flex direction="column" justify="center" align="center">
       <Heading
@@ -35,8 +35,13 @@ const Home = () => {
     </Flex>
   );
 };
+const Home = () => {
+    return <Default>
+        <Home_/>
+    </Default>
+}
 
 
-Home.getLayout = getLayout;
+// Home.getLayout = getLayout;
 
 export default Home;

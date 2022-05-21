@@ -1,5 +1,5 @@
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 import { useColorModeValue, Flex } from '@chakra-ui/core';
 import React from 'react';
 

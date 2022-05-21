@@ -1,5 +1,5 @@
 import { useColorModeValue, Button, Flex } from '@chakra-ui/core';
-import ThemeToggle from './theme-toggle';
+import ThemeToggle from './ThemeToggle';
 import { MY_APP } from '../utils/constants';
 import React from 'react';
 import {Link} from "react-router-dom";

@@ -1,7 +1,8 @@
 import { getLayout } from '../../layouts/dashboard';
 import {Clients} from "../../components/screens/parkingspace";
 import React from "react";
-const DashboardDocuments = () => <Clients/>;
+import Layout from "../../components/dashboard/Layout";
+const DashboardDocuments = () => <Layout><Clients/></Layout>;
 
 DashboardDocuments.getLayout = getLayout;
 

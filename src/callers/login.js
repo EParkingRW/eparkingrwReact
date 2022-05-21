@@ -1,10 +1,11 @@
 import {Login} from "../components/screens/login";
 import React from "react";
-import { getLayout } from '../layouts/login';
+import LoginLayout from '../layouts/loginLayout';
 const LoginPage = () =>{
     return(
-        <Login/>
+        <LoginLayout>
+            <Login/>
+        </LoginLayout>
     )
 };
-LoginPage.getLayout = getLayout;
 export default LoginPage

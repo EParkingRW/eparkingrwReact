@@ -44,7 +44,7 @@ export const A = forwardRef(({ children, icon, ...props }, ref) => {
   );
 });
 
-export const NavLink = forwardRef(({ href, ...props }, ref) => {
+export const NvLink = forwardRef(({ href, ...props }, ref) => {
   const hoverColor = useColorModeValue('gray.900', 'white');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
   const activeColor = useColorModeValue('gray.600', 'teal.200');
