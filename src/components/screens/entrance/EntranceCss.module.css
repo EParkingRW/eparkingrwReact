@@ -1,0 +1,160 @@
+.containerCustom {
+    /*background: #F7F8FC;*/
+}
+
+.customCss2 {
+    margin-top: 25px;
+}
+
+.topCardBody {
+    border-radius: 5px;
+    /*background: #F7F8FC;*/
+    border: 1px solid #DFE0EB;
+    height: 124.797px;
+}
+
+.gateIsOpen {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.closeGate {
+    background: #FFB7B7;
+    color: #000000;
+    font-size: 19px;
+    border-style: none;
+    margin-top: 25px;
+}
+
+.colOfSlots {
+    margin-top: 25px;
+}
+
+.slotsCardBody {
+    border-radius: 5px;
+    min-height: 124.797px;
+    border: 1px solid #3751FF;
+}
+
+.availableSlots {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #3751FF;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.availableSlotsValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #3751FF;
+}
+
+.cardColumn {
+    margin-top: 25px;
+}
+
+.vehicleInCardBody {
+    border-radius: 5px;
+    min-height: 124.797px;
+    border: 1px solid #DFE0EB;
+}
+
+.vehicleInText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.vehicleInValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #252733;
+}
+
+.totalClientsCardBody {
+    border-radius: 5px;
+    min-height: 124.797px;
+    border: 1px solid #DFE0EB;
+}
+
+.totalClientsText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.totalClientsValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #252733;
+}
+
+.carAtGateRow {
+    margin-top: 72px;
+}
+
+.carAtGateCol {
+    margin-top: 56px;
+}
+
+.carAtGateText {
+    font-size: 19px;
+    margin-left: 34px;
+    color: #3751FF;
+}
+
+.carAtGateCard {
+    height: 509px;
+    padding-right: 58px;
+    padding-left: 58px;
+}
+
+.carAtGateValue {
+    color: #9FA2B4;
+    margin-top: 91px;
+}
+
+.carAtGateImageRow {
+    margin-top: 44px;
+}
+
+.carAtGateImage {
+    margin-top: 44px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+}
+
+.carAtGateTimePass {
+    margin-top: 44px;
+    font-size: 19px;
+    color: #9FA2B4;
+}
+
+.recentCarsCard {
+    height: 705px;
+}
+
+.entranceTimeText {
+    color: #3751FF;
+}
+
+.recentCarsPlatteNumberRow {
+    border-bottom: 1px solid #b8bbdc;
+}
+
+.recentCarsValue {
+    color: #252733;
+}
+
+.recentCarsEntranceTime {
+    color: #9FA2B4;
+}

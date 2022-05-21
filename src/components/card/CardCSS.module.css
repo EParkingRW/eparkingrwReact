@@ -1,0 +1,9 @@
+.cardB{
+    border-width: 1px;border-style: solid;border-radius: 5px;
+}
+.cardHead{
+    font-size: 19px;font-family: Mulish, sans-serif;color: #3751FF;filter: hue-rotate(0deg) invert(0%);
+}
+.cardBoy{
+    font-size: 40px;font-weight: bold;font-family: mul;color: #3751FF;
+}

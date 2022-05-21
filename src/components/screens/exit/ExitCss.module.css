@@ -1,0 +1,194 @@
+.overOthers{
+    z-index: 20;
+}
+
+.containerMain {
+    /*background: #F7F8FC;*/
+    position: relative;
+    z-index: 10;
+}
+
+.mainCol {
+    margin-top: 25px;
+}
+
+.leftClientsCardBody {
+    border-radius: 5px;
+    height: 124.797px;
+    border: 1px solid #3751FF;
+}
+
+.leftClientsText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #3751FF;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.lefClientValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #3751FF;
+}
+
+.exitedCarsCol {
+    margin-top: 25px;
+}
+
+.exitedCarsCardBody {
+    border-radius: 5px;
+    height: 124.797px;
+    border: 1px solid #DFE0EB;
+}
+
+.exitedCarsText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.exitedCarValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #252733;
+}
+
+.carAtGateRow {
+    margin-top: 128px;
+}
+
+.carAtGateText {
+    color: #3751FF;
+    margin-left: 30px;
+    font-size: 19px;
+}
+
+.carAtGatePlateNumber {
+    font-size: 36px;
+    color: #9FA2B4;
+}
+
+.carAtGateImage {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+}
+
+.payByText {
+    margin-top: 68px;
+    margin-left: 44px;
+    color: #3751FF;
+    font-size: 19px;
+}
+
+.modeOfPaymentCard {
+    min-height: 252px;
+}
+
+.mobileMoneyText {
+    min-width: 152px;
+}
+
+.cashText {
+    min-width: 114px;
+    background: #7975B7;
+}
+
+.bankButton {
+    min-width: 139px;
+    background: #E6E67D;
+    color: black;
+}
+
+.entranceTimeCard {
+    width: 293px;
+    height: 169px;
+}
+
+.entranceTimeCardBody {
+    border-radius: 5px;
+    height: 124.797px;
+    /*background: #F7F8FC;*/
+}
+
+.entranceTimeText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.entranceTimeValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #252733;
+}
+
+.entranceTimeDateValue {
+    font-size: 12px;
+    color: #C5C7CD;
+}
+
+.moneyToPayRow {
+    padding-top: 49px;
+}
+
+.moneyToPayCard {
+    width: 293px;
+}
+
+.moneyToPayCardBody {
+    border-radius: 5px;
+    height: 124.797px;
+    border: 1px solid #3751FF;
+}
+
+.moneyToPayText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #3751FF;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.moneyToPayValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #3751FF;
+}
+
+.totalTimeRow {
+    padding-top: 49px;
+}
+
+.totalTimeCard {
+    width: 293px;
+}
+
+.totalTimeCardBody {
+    border-radius: 5px;
+    height: 124.797px;
+    background: #F7F8FC;
+}
+
+.totalTimeCardText {
+    font-size: 19px;
+    font-family: Mulish, sans-serif;
+    color: #9FA2B4;
+    filter: hue-rotate(0deg) invert(0%);
+}
+
+.totalTimeCardValue {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: mul;
+    color: #252733;
+}
+.carAtGateCardBody{
+    border: 1px solid black;
+}

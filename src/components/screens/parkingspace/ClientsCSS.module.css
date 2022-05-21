@@ -1,0 +1,17 @@
+.sort{
+    margin-left: 20px;
+}
+.tableRowUpperSpan{
+    font-size: 14px;
+    color: #f19010;
+}
+.tableRowLowerSpan{
+    font-size: 12px;
+    color: #C5C7CD;
+}
+.light{
+    color: white;
+}
+.dark{
+    color: black;
+}
