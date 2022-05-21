@@ -71,6 +71,41 @@ export function SocketProvider({children}){
                 return {payload: {...error.response}, status: config.status.ERROR}
             });
     }
+    const carsInRange = (from, to) => {
+        return axios.post(config.backendURL+"/api/v1/vehicles/range", {startingDate:from, endingDate:to})
+            .then(function (response) {
+                if(response.status === 201 || response.status === 200){
+                    console.log("inside state")
+                    console.log(response.data.data.data);
+
+                    return {payload: [...response.data.data.data], status: config.status.DONE}
+                }
+                else {
+                    return {payload: [response.data], status: config.status.ERROR}
+                }
+
+            }).then((output) => {
+                return {...output}
+            }).then(data => {
+                console.log(data)
+                let all = []
+                try {
+                    all = data?.payload?.map(each => {
+                        return addMoreField(each);
+
+                    })
+                }catch (e) {
+                }
+
+
+                return [...all]
+            })
+            .catch(function (error) {
+                console.log("before error")
+                console.log(error)
+                return {payload: {...error.response}, status: config.status.ERROR}
+            });
+    }
 
     useEffect(() => {
         loadCars().then(data => {
@@ -151,7 +186,7 @@ export function SocketProvider({children}){
 
     return (
         <SocketContext.Provider value={{exitCar,setExitCar,
-            entranceCar, setEntranceCar,elapsedTime, setElapsedTime,allCars, carsIn}}>
+            entranceCar, setEntranceCar,elapsedTime, setElapsedTime,allCars, carsIn,carsInRange}}>
             {children}
         </SocketContext.Provider>
     )

@@ -5,14 +5,13 @@ import { faSpinner, faFilter, faEllipsisV,faSortAmountDesc } from '@fortawesome/
 import StateContext from "../../../components/context/StateContext";
 import SocketContext from "../../../components/context/socket";
 
-const Clients = () => {
+const Clients = ({carsIn}) => {
 
     const {newColorMode } = useState("light");
 
     const {setPageTitle} = useContext(StateContext);
     const [isLight, setLight] = useState(() =>newColorMode==='light');
 
-    const {carsIn} = useContext(SocketContext);
 
     const [searchText, setSearchText] = useState(null);
     const [nItemsToShow, setNItemsToShow] = useState(10)
@@ -24,7 +23,7 @@ const Clients = () => {
 
 
     useEffect(() => {
-        let endI = nItemsToShow*activePage < carsIn.length ? nItemsToShow*activePage:carsIn.length
+        let endI = nItemsToShow*activePage < carsIn?.length ? nItemsToShow*activePage:carsIn.length
         endIndex = endI
         let startI = 0;
         if(!(endIndex - nItemsToShow <=0)){
@@ -32,19 +31,22 @@ const Clients = () => {
         }
         startIndex = startI;
         setDisplayingItems([])
-        carsIn.forEach((each, index) => {
-            if(index >= startI && index < endI){
-                console.log("index " + true)
-                if(searchText===undefined ||searchText==null || searchText==="" || searchText===" "){
-                    setDisplayingItems(displaying => [...displaying, {...each}])
-                }
-                else {
-                    if(each.plateText.toLowerCase().includes(searchText.toLowerCase())){
+        if(carsIn.length !== 0){
+            carsIn?.forEach((each, index) => {
+                if(index >= startI && index < endI){
+                    console.log("index " + true)
+                    if(searchText===undefined ||searchText==null || searchText==="" || searchText===" "){
                         setDisplayingItems(displaying => [...displaying, {...each}])
                     }
+                    else {
+                        if(each.plateText.toLowerCase().includes(searchText.toLowerCase())){
+                            setDisplayingItems(displaying => [...displaying, {...each}])
+                        }
+                    }
                 }
-            }
-        })
+            })
+        }
+
         numberOfPages = Math.ceil(displayingItems.length/nItemsToShow)
     },[searchText, nItemsToShow, activePage, carsIn])
     const pageTitle = "Parking space";
