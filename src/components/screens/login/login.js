@@ -3,7 +3,7 @@ import classes from "./Css.module.css";
 import {useContext, useEffect, useRef, useState} from "react";
 import UserContext from "../../../components/context/UserContext";
 import config from "../../../config";
-import Router from "react-router-dom";
+import {Router} from "react-router-dom";
 import React from "react";
 
 
