@@ -1,4 +1,4 @@
-import {Image, Button} from "@chakra-ui/core";
+
 import classes from "./Css.module.css";
 import {useRef, useContext, useState, useEffect} from "react";
 import UserContext from "../../../components/context/UserContext";
@@ -49,7 +49,7 @@ export default function Signup(){
                             {messagePart}
                         </div>
                         <h1 className={classes.head} id="head">user creation</h1>
-                        <div><Image className={"rounded img-fluid "+classes.image }id="image" alt={""}
+                        <div><img className={"rounded img-fluid "+classes.image }id="image" alt={""}
                                   src="logo.svg"/></div>
                         <div className="form-group mb-3"><input ref={email}
                             onChange={() => {}}
@@ -61,7 +61,7 @@ export default function Signup(){
                                                                 placeholder="phone"/></div>
                         {
                             userCreation.status !== config.status.LOADING?(
-                                <Button
+                                <button
                                     onClick={() => handleSubmit()}
                                     as="a"
                                     fontWeight="medium"
@@ -71,9 +71,9 @@ export default function Signup(){
 
                                 >
                                     Signup
-                                </Button>
+                                </button>
                             ):(
-                                <Button disabled
+                                <button disabled
                                     as="a"
                                     fontWeight="medium"
                                     colorScheme='blue' variant='outline'
@@ -82,7 +82,7 @@ export default function Signup(){
 
                                 >
                                     loading
-                                </Button>
+                                </button>
                             )
                         }
 

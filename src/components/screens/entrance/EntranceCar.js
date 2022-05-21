@@ -1,5 +1,4 @@
 import classes from "../../../components/screens/entrance/EntranceCss.module.css";
-import {Image} from "@chakra-ui/core";
 import React from "react";
 
 export default function EntranceCar({entranceCar,elapsedTime, setElapsedTime}){
@@ -19,9 +18,9 @@ export default function EntranceCar({entranceCar,elapsedTime, setElapsedTime}){
                         </div>
                         <div className={"row "+classes.carAtGateImageRow}>
                             <div className="col d-flex justify-content-xl-center">
-                                <Image className={classes.carAtGateImage}
-                                       maxH={260}
-                                                fallbackSrc={"/fallback1.svg"}
+                                <img className={"w-25 "+classes.carAtGateImage}
+
+
                                                 src={entranceCar.imageUrl}/>
                             </div>
                         </div>

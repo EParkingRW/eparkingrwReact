@@ -1,5 +1,4 @@
 import classes from "../../../components/screens/exit/ExitCss.module.css";
-import {Image} from "@chakra-ui/core";
 import PayByMomo from "../../../components/screens/exit/PayByMomo";
 import PayByCard from "../../../components/screens/exit/PayByCard";
 import React from "react";
@@ -33,7 +32,8 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                         </div>
                                     </div>
                                     <div className="row w-100">
-                                        <div className="col w-100"><Image className={classes.carAtGateImage} fallbackSrc={"/fallback1.svg"}
+                                        <div className="col w-100">
+                                            <img className={classes.carAtGateImage}
                                                                           src={exitCar.imageUrl}/></div>
                                     </div>
                                     <h1 className={classes.payByText}>Pay

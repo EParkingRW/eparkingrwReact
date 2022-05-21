@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Image} from "@chakra-ui/core";
+
 import classes from "./Css.module.css"
 import StateContext from "../../../components/context/StateContext";
 import useColorMode from "../../../utils/color-mode";
@@ -33,7 +33,7 @@ export default function Wallet (){
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6"><Image className="d-none d-sm-none d-md-block d-lg-block" align={""}
+                    <div className="col-md-6"><img className="d-none d-sm-none d-md-block d-lg-block" align={""}
                                                    src="/withdraw.svg"/></div>
                 </div>
             </div>

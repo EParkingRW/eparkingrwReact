@@ -1,7 +1,7 @@
-import Page from '../components/Page';
+
 import React from 'react';
 
-const Default = ({ children }) => <Page>{children}</Page>;
+const Default = ({ children }) => <div>{children}</div>;
 
 export const getLayout = (page) => <Default>{page}</Default>;
 

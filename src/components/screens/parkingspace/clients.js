@@ -1,15 +1,13 @@
 import classes from './ClientsCSS.module.css';
 import React, {Fragment, useContext, useEffect, useState} from "react";
-import {Image, Select} from "@chakra-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faFilter, faEllipsisV,faSortAmountDesc } from '@fortawesome/free-solid-svg-icons'
 import StateContext from "../../../components/context/StateContext";
-import useColorMode from "../../../utils/color-mode";
 import SocketContext from "../../../components/context/socket";
 
 const Clients = () => {
 
-    const {newColorMode } = useColorMode();
+    const {newColorMode } = useState("light");
 
     const {setPageTitle} = useContext(StateContext);
     const [isLight, setLight] = useState(() =>newColorMode==='light');
@@ -83,13 +81,13 @@ const Clients = () => {
                     <div className="col-md-6 text-nowrap">
                         <div id="dataTable_length" className="dataTables_length" aria-controls="dataTable"><label
                             className="form-label">Show&nbsp;
-                            <Select placeholder={"10"}
+                            <select placeholder={"10"}
                             className="d-inline-block form-select form-select-sm">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
-                        </Select>&nbsp;</label></div>
+                        </select>&nbsp;</label></div>
                     </div>
                     <div className="col-md-6">
                         <div className="text-md-end dataTables_filter" id="dataTable_filter">
@@ -179,10 +177,9 @@ const Clients = () => {
                     <div className={"container "}
                     >
                         <div className="row">
-                            <div className="col-md-4 col-lg-4 col-xl-4 col-xxl-4"><Image alt={""}
-                                                                                         className="rounded-circle d-none d-sm-none d-md-inline-block d-lg-inline-block me-2"
-                                                                                         fallbackSrc={"/fallback1.svg"}
-                                                                                         boxSize={"35px"} src={client.imageUrl}/></div>
+                            <div className="col-md-4 col-lg-4 col-xl-4 col-xxl-4"><img alt={""}
+                                                                                         className="rounded-circle d-none d-sm-none d-md-inline-block d-lg-inline-block me-2 w-25"
+                                                                                          src={client.imageUrl}/></div>
                             <div className="col-md-8">
                                 <div><span className={classes.tableRowUpperSpan}>{client.plateText}</span></div>
                                 <div><span className={"d-none d-sm-none d-md-flex d-lg-flex " + classes.tableRowLowerSpan}

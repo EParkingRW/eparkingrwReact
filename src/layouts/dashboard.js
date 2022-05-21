@@ -1,7 +1,7 @@
-import { Dashboard } from '../components/dashboard';
+
 import React from 'react';
 
-const DashboardLayout = ({ children }) => <Dashboard>{children}</Dashboard>;
+const DashboardLayout = ({ children }) => <div>{children}</div>;
 
 export const getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 

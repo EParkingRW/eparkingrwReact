@@ -1,4 +1,4 @@
-import {Image, Button} from "@chakra-ui/core";
+
 import classes from "./Css.module.css";
 import {useContext, useEffect, useRef, useState} from "react";
 import UserContext from "../../../components/context/UserContext";
@@ -48,7 +48,7 @@ export default function Login(){
                             {messagePart}
                         </div>
                         <h1 className={classes.head} id="head">Login</h1>
-                        <div><Image className={"rounded img-fluid "+classes.image }id="image" alt={""}
+                        <div><img className={"rounded img-fluid "+classes.image }id="image" alt={""}
                                   src="logo.svg"/></div>
                         <div className="form-group mb-3"><input ref={login} className={"form-control "+classes.formum} type="email" id="formum"
                                                                 placeholder="Email"/></div>
@@ -57,7 +57,7 @@ export default function Login(){
                                                                                    placeholder="Password"/></div>)
                         }
                         {
-                            forgetPass?(<Button
+                            forgetPass?(<button
                                 onClick={() => {}}
                                 as="a"
                                 fontWeight="medium"
@@ -67,9 +67,9 @@ export default function Login(){
 
                             >
                                 send Recover Email
-                            </Button>)
+                            </button>)
                                 :
-                                (<Button
+                                (<button
                                 onClick={() => handleSubmit()}
                                 as="a"
 
@@ -80,7 +80,7 @@ export default function Login(){
 
                             >
                                 Login
-                            </Button>)
+                            </button>)
                         }
                         {
                             forgetPass?(

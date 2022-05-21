@@ -1,4 +1,4 @@
-import { getLayout } from '../../layouts/dashboard';
+
 import {Entrance} from "../../components/screens/entrance";
 import React from "react";
 import Layout from "../../components/dashboard/Layout";
