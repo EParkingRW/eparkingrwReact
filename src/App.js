@@ -6,6 +6,7 @@ import {UserProvider} from "./components/context/UserContext";
 import {StateProvider} from "./components/context/StateContext";
 import AppRoutes from "./AppRoutes";
 import routes from './pages'
+import {PayProvider} from "./components/context/PayContext";
 
 
 function Providers(props) {
@@ -18,10 +19,13 @@ function App() {
       <SocketProvider>
         <UserProvider>
           <StateProvider>
+              <PayProvider>
+
 
                             <Router>
                     <AppRoutes routes={routes} />
                 </Router>
+              </PayProvider>
                      </StateProvider>
         </UserProvider>
       </SocketProvider>

@@ -3,6 +3,7 @@ import React, {Fragment, useContext, useEffect, useState} from "react";
 import StateContext from "../../../components/context/StateContext";
 import SocketContext from "../../../components/context/socket";
 import CarAtGate from "../../../components/screens/exit/CarAtGate";
+import PayContext from "../../context/PayContext";
 
 
 export default function ExitGate(){
@@ -13,6 +14,7 @@ export default function ExitGate(){
     const [showPayByCard, setShowPayByCard] = useState(false);
     const [currentPayment, setCurrentPayment] = useState("none");
     const {exitCar,carsIn} = useContext(SocketContext);
+    const {handlePay} = useContext(PayContext);
 
     useEffect(() => {
         setPageTitle(pageTitle);
@@ -71,7 +73,7 @@ export default function ExitGate(){
                         </div>
                     </div>
                 </div>
-                <CarAtGate showPayByMomo={showPayByMomo} setShowPayByMomo={setShowPayByMomo}
+                <CarAtGate handlePay={handlePay} showPayByMomo={showPayByMomo} setShowPayByMomo={setShowPayByMomo}
                            showPayByCash={showPayByCash} setShowPayByCash={setShowPayByCash}
                            showPayByCard={showPayByCard} setShowPayByCard={setShowPayByCard}
                            exitCar={exitCar}/>

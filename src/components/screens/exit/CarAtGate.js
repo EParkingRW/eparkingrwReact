@@ -1,12 +1,34 @@
 import classes from "../../../components/screens/exit/ExitCss.module.css";
 import PayByMomo from "../../../components/screens/exit/PayByMomo";
 import PayByCard from "../../../components/screens/exit/PayByCard";
-import React from "react";
-import {convertFromStringToDate} from "../../../utils/functions";
+import React, {useRef, useState} from "react";
+import {convertFromStringToDate, validatePhoneNumber} from "../../../utils/functions";
 import config from "../../../config";
 
 export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByMomo,setShowPayByCard,showPayByCash,
-                                      showPayByCard, exitCar}){
+                                      showPayByCard, exitCar,handlePay}){
+    const [mobileNumber, setMobileNumber] = useState("078");
+    const [incorrectTelMessage, setIncorrectTelMessage] = useState(null);
+    let moneyToPay = config.minimumMoneyToPay;
+    function handlePayByMomo() {
+        if(validatePhoneNumber(mobileNumber)){
+            console.log("correct")
+            handlePay({payBy:"momo",amount:moneyToPay, phone_number:mobileNumber})
+        }
+        else {
+            console.log("not correct")
+        }
+
+    }
+    const handleMobileNumberChange = (event) => {
+        if(validatePhoneNumber(event.target.value)){
+            setIncorrectTelMessage(null);
+        }
+        else {
+            setIncorrectTelMessage("enter correct phoneNumber");
+        }
+        setMobileNumber(event.target.value);
+    }
     if(exitCar==null){
         return (<div>no car at gate</div>)
     }
@@ -16,7 +38,7 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
 
         let difference= Math.abs(exitedDate-entranceDate);
         let min = (difference/(1000 * 60)).toFixed(2)
-        let moneyToPay = Math.round(min*config.paymentRate)
+        moneyToPay = Math.round(min*config.paymentRate)
         moneyToPay = moneyToPay > config.minimumMoneyToPay ? moneyToPay : config.minimumMoneyToPay
         return(
             <div className={"row "+classes.carAtGateRow}>
@@ -69,16 +91,22 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                                                         <div className="mb-3">
                                                                             <label htmlFor="exampleInputTel"
                                                                                    className="form-label">phone number</label>
-                                                                            <input type="email"
+                                                                            <input type="tel" value={mobileNumber} onChange={handleMobileNumberChange}
                                                                                    className="form-control"
                                                                                    id="exampleInputTel"
                                                                                    aria-describedby="TelHelp"/>
                                                                             <div id="emailHelp"
                                                                                  className="form-text">Enter customer phone number
                                                                             </div>
+                                                                            {incorrectTelMessage===null?null:<div>
+                                                                                <div className="alert alert-danger"
+                                                                                     role="alert">
+                                                                                    {incorrectTelMessage}
+                                                                                </div>
+                                                                            </div>}
                                                                         </div>
 
-                                                                        <button className={"btn btn-primary "+classes.mobileMoneyText} onClick={() => {}} type="button">pay
+                                                                        <button className={"btn btn-primary "+classes.mobileMoneyText} onClick={handlePayByMomo} type="button">pay
                                                                         </button>
                                                                     </form>
                                                                 </div>

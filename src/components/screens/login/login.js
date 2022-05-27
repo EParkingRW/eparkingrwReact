@@ -3,7 +3,7 @@ import classes from "./Css.module.css";
 import {useContext, useEffect, useRef, useState} from "react";
 import UserContext from "../../../components/context/UserContext";
 import config from "../../../config";
-import {Router} from "react-router-dom";
+import {useNavigate  } from "react-router-dom";
 import React from "react";
 
 
@@ -13,6 +13,8 @@ export default function Login(){
     const password = useRef();
     const [forgetPass, setForgetPass] = useState(false);
     const [messagePart, setMessagePart] = useState(null)
+
+    let navigate = useNavigate() ;
 
     useEffect(()=>{
         if(messagePart!==null){
@@ -34,7 +36,8 @@ export default function Login(){
                 }
             }
             else if(response.status === config.status.DONE){
-                Router.push("/dashboard")
+                navigate('/dashboard', { replace: true })
+                // history.push("/dashboard");
             }
         });
     }
@@ -59,24 +62,16 @@ export default function Login(){
                         {
                             forgetPass?(<button
                                 onClick={() => {}}
-                                as="a"
-                                fontWeight="medium"
-                                colorScheme='blue' variant='outline'
-                                mt={4}
-                                maxW="200px"
 
                             >
                                 send Recover Email
                             </button>)
                                 :
-                                (<button
-                                onClick={() => handleSubmit()}
-                                as="a"
-
-                                fontWeight="medium"
-                                colorScheme='blue' variant='outline'
-                                mt={4}
-                                maxW="200px"
+                                (<button type={"button"}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    handleSubmit()
+                                }}
 
                             >
                                 Login

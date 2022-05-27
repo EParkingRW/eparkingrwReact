@@ -46,7 +46,8 @@ export function UserProvider({children}){
             .then(function (response) {
                 if(response.status === 201 || response.status === 200){
                     console.log(response.data);
-                    setUser({...user,...response.data})
+                    console.log(response.data.data.token)
+                    setUser({...user,user:response.data.user,token:response.data.data.token})
 
                     return {payload: {...response.data}, status: config.status.DONE}
                 }

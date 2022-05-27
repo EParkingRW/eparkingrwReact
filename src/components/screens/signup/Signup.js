@@ -63,22 +63,12 @@ export default function Signup(){
                             userCreation.status !== config.status.LOADING?(
                                 <button
                                     onClick={() => handleSubmit()}
-                                    as="a"
-                                    fontWeight="medium"
-                                    colorScheme='blue' variant='outline'
-                                    mt={4}
-                                    maxW="200px"
 
                                 >
                                     Signup
                                 </button>
                             ):(
                                 <button disabled
-                                    as="a"
-                                    fontWeight="medium"
-                                    colorScheme='blue' variant='outline'
-                                    mt={4}
-                                    maxW="200px"
 
                                 >
                                     loading
