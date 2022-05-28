@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {Fragment, useContext, useState} from "react";
 import "./dasboardlayout.css"
 import {Link} from "react-router-dom";
+import userContext from "../context/UserContext";
+import config from "../../config";
 
 export default function Layout({children}) {
     const [toggle, setToggle] = useState("bx-x");
@@ -9,6 +11,7 @@ export default function Layout({children}) {
     const [headerpd, setHeaderpd] = useState("body-pd");
     const [isShowing, setShowing] = useState(true);
     const [activeLink, setActiveLink] = useState(null);
+    const {user} = useContext(userContext);
     const toggling = () => {
         setShowing((i) => !i);
         if (isShowing) {
@@ -51,9 +54,21 @@ export default function Layout({children}) {
                             className="nav_name">Exit</span></Link><Link className={"nav_link "}
                                                                          to="/space"><i
                             className="fa fa-star bx bx-bookmark nav_icon"></i><span
-                            className="nav_name">Space</span></Link><Link className={"nav_link "} to="/reports"><i
-                            className="fa fa-star bx bx-folder nav_icon"></i><span
-                            className="nav_name">Reports</span></Link></div>
+                            className="nav_name">Space</span></Link>
+                            {/*{*/}
+                            {/*    user.token!==null && (user.user.roleId !== config.roles.normal)?(*/}
+                                    <Fragment>
+                                    <Link className={"nav_link "} to="/reports"><i
+                                        className="fa fa-star bx bx-folder nav_icon"></i><span
+                                        className="nav_name">Reports</span></Link>
+                                    <Link className={"nav_link "} to="/signup"><i
+                                        className="fa fa-star bx bx-folder nav_icon"></i><span
+                                        className="nav_name">New user</span></Link>
+                                </Fragment>)
+                            {/*        :""*/}
+                            {/*}*/}
+
+                        </div>
                     </div>
                 </nav>
             </div>

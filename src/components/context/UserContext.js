@@ -40,6 +40,55 @@ export function UserProvider({children}){
                 return {payload: {...error.response.data}, status: config.status.ERROR}
             });
     }
+    async function handleResetPassword(data){
+        let configL = {
+            method: 'put',
+            url: config.backendURL+"/api/v1/auth/resetingpassword",
+            data : {password:data.password, token:data.token}
+        };
+        return axios(configL).then(response => {
+            console.log("reset pass")
+            if(response.status === 200 || response.status === 201){
+                console.log(response)
+                return {payload:response.data, status:config.status.DONE}
+            }
+            else {
+                console.log(response)
+                return {payload:response.data, status:config.status.ERROR}
+            }
+
+        }).catch(error => {
+            console.log(error)
+            return {payload:error, status:config.status.ERROR}
+        })
+    }
+
+    async function handleForgotPassword(data){
+        let configL = {
+            method: 'put',
+            url: config.backendURL+"/api/v1/auth/forgot-password",
+            headers: {
+                'Authorization': config.constants.Bearer+user.token,
+                'Content-Type': 'application/json'
+            },
+            data : {email:data.email}
+        };
+        return axios(configL).then(response => {
+            console.log("forgot pass")
+            if(response.status === 200 || response.status === 201){
+                console.log(response)
+                return {payload:response.data.data, status:config.status.DONE}
+            }
+            else {
+                console.log(response)
+                return {payload:response.data, status:config.status.ERROR}
+            }
+
+        }).catch(error => {
+            console.log(error)
+            return {payload:error, status:config.status.ERROR}
+        })
+    }
 
     async function handleLogin(data){
         return axios.post(config.backendURL+"/api/v1/auth/login", {...data})
@@ -86,7 +135,7 @@ export function UserProvider({children}){
     }
 
     return (
-        <UserContext.Provider value={{user, setUser, handleSignUp,handleLogin,userCreation, setUserCreation}}>
+        <UserContext.Provider value={{user, setUser, handleResetPassword, handleForgotPassword, handleSignUp,handleLogin,userCreation, setUserCreation}}>
             {children}
         </UserContext.Provider>
     )

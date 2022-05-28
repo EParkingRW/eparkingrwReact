@@ -9,7 +9,7 @@ import {Button} from "react-bootstrap";
 
 
 export default function Login(){
-    const {handleLogin, user} = useContext(UserContext)
+    const {handleLogin, handleForgotPassword, user} = useContext(UserContext)
     const login = useRef();
     const password = useRef();
     const [forgetPass, setForgetPass] = useState(false);
@@ -42,6 +42,17 @@ export default function Login(){
             }
         });
     }
+    const handleForgotPasswordBtn = () => {
+        handleForgotPassword({email:login.current.value}).then(response => {
+            if(response.status === config.status.DONE){
+                setMessagePart(<div className="alert alert-success" role="alert">reset success, check your email </div>)
+            }
+            else {
+                setMessagePart(<div className="alert alert-danger" role="alert">Error</div>);
+            }
+            console.log(response)
+        }).catch(error => setMessagePart(<div className="alert alert-danger" role="alert">Error</div>))
+    }
     return(
         <div className={"container-fluid "}
         >
@@ -62,7 +73,10 @@ export default function Login(){
                         }
                         {
                             forgetPass?(<Button className={"btn-dark"}
-                                onClick={() => {}}
+                                onClick={(event) => {
+                                    event.preventDefault()
+                                    handleForgotPasswordBtn()
+                                }}
 
                             >
                                 send Recover Email
