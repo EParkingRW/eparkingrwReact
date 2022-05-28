@@ -47,9 +47,28 @@ export function UserProvider({children}){
                 if(response.status === 201 || response.status === 200){
                     console.log(response.data);
                     console.log(response.data.data.token)
-                    setUser({...user,user:response.data.user,token:response.data.data.token})
+                    let configL = {
+                        method: 'get',
+                        url: config.backendURL+"/api/v1/auth/profile",
+                        headers: {
+                            'Authorization': config.constants.Bearer+response.data.data.token,
+                            'Content-Type': 'application/json'
+                        }
+                    };
 
-                    return {payload: {...response.data}, status: config.status.DONE}
+
+
+
+                    setUser({...user, token:response.data.data.token});
+                    return axios(configL).then(response => {
+                        console.log("profile");
+                        console.log(response.data.data.profile)
+                        setUser({...user,user:response.data.data.profile})
+                        return {payload: {...response.data}, status: config.status.DONE}
+                    }).catch(error => {
+                        console.log(error)
+                        return {payload: {...response.data}, status: config.status.ERROR}
+                    });
                 }
                 else {
                     return {payload: {...response.data}, status: config.status.ERROR}

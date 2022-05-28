@@ -6,6 +6,7 @@ import config from "../../../config";
 import axios from "axios";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
+import {Button} from "react-bootstrap";
 
 export default function Signup(){
     const {userCreation,handleSignUp} = useContext(UserContext);
@@ -61,18 +62,18 @@ export default function Signup(){
                                                                 placeholder="phone"/></div>
                         {
                             userCreation.status !== config.status.LOADING?(
-                                <button
+                                <Button className={"btn-dark"}
                                     onClick={() => handleSubmit()}
 
                                 >
                                     Signup
-                                </button>
+                                </Button>
                             ):(
-                                <button disabled
+                                <Button className={"btn-dark"} disabled
 
                                 >
                                     loading
-                                </button>
+                                </Button>
                             )
                         }
 

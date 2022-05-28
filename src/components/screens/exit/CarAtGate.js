@@ -1,7 +1,6 @@
 import classes from "../../../components/screens/exit/ExitCss.module.css";
-import PayByMomo from "../../../components/screens/exit/PayByMomo";
 import PayByCard from "../../../components/screens/exit/PayByCard";
-import React, {useRef, useState} from "react";
+import React, { useState} from "react";
 import {convertFromStringToDate, validatePhoneNumber} from "../../../utils/functions";
 import config from "../../../config";
 
@@ -19,6 +18,9 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
             console.log("not correct")
         }
 
+    }
+    function handlePayByCash(){
+        handlePay({payBy:"cash",amount:moneyToPay})
     }
     const handleMobileNumberChange = (event) => {
         if(validatePhoneNumber(event.target.value)){
@@ -112,7 +114,12 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                                                 </div>
                                                             </div>
                                                             <div className={showPayByCash?"d-block ":"d-none"}>
-                                                                <PayByMomo amount={2000}/>
+                                                                <div>
+                                                                    <form>
+                                                                        <button className={"btn btn-primary "+classes.mobileMoneyText} onClick={handlePayByCash} type="button">pay
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                             <div className={showPayByCard?"d-block ":"d-none"}>
                                                                 <PayByCard/>

@@ -43,6 +43,29 @@ export function PayProvider({children}){
                     console.log(error);
                 });
         }
+        else if(data.payBy === "cash"){
+            let dataNew = JSON.stringify({
+                "amount": data.amount
+            });
+
+            let configL = {
+                method: 'post',
+                url: config.backendURL+"/api/v1/payment/cash",
+                headers: {
+                    'Authorization': config.constants.Bearer+user.token,
+                    'Content-Type': 'application/json'
+                },
+                data : dataNew
+            };
+
+            axios(configL)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
 
     }
 

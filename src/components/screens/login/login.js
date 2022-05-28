@@ -5,6 +5,7 @@ import UserContext from "../../../components/context/UserContext";
 import config from "../../../config";
 import {useNavigate  } from "react-router-dom";
 import React from "react";
+import {Button} from "react-bootstrap";
 
 
 export default function Login(){
@@ -60,14 +61,14 @@ export default function Login(){
                                                                                    placeholder="Password"/></div>)
                         }
                         {
-                            forgetPass?(<button
+                            forgetPass?(<Button className={"btn-dark"}
                                 onClick={() => {}}
 
                             >
                                 send Recover Email
-                            </button>)
+                            </Button>)
                                 :
-                                (<button type={"button"}
+                                (<Button className={"btn-dark"} type={"button"}
                                 onClick={(event) => {
                                     event.preventDefault();
                                     handleSubmit()
@@ -75,7 +76,7 @@ export default function Login(){
 
                             >
                                 Login
-                            </button>)
+                            </Button>)
                         }
                         {
                             forgetPass?(
