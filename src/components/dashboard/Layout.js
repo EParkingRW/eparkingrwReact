@@ -87,8 +87,8 @@ export default function Layout({children}) {
                             <FontAwesomeIcon icon={faParking} color="yellow" />
                             <span
                             className="nav_name">Space</span></Link>
-                            {/*{*/}
-                            {/*    user.token!==null && (user.user.roleId !== config.roles.normal)?(*/}
+                            {
+                                user.user!==null && (user.user.role.title !== "normal")?(
                                     <Fragment>
                                     <Link className={"nav_link "} to="/reports">
                                         <FontAwesomeIcon icon={faSignal} color="yellow" />
@@ -99,8 +99,8 @@ export default function Layout({children}) {
                                         <span
                                         className="nav_name">New user</span></Link>
                                 </Fragment>)
-                            {/*        :""*/}
-                            {/*}*/}
+                                    :""
+                            }
 
                         </div>
                     </div>
