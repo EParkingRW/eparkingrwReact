@@ -14,8 +14,8 @@ export function SocketProvider({children}){
     const [elapsedTime, setElapsedTime] = useState(0);
     const [allCars, setAllCars] = useState([])
     const [carsIn, setCarsIn] = useState([])
-    const [payedByCash, setPayedByCash] = useState([]);
-    const [payedByMomo, setPayedByMomo] = useState([])
+    const [payedByCash, setPayedByCash] = useState({});
+    const [payedByMomo, setPayedByMomo] = useState({})
     function addMoreField(each) {
         let EntranceDateFormed = null;
         let EntranceTime = null;
@@ -79,6 +79,40 @@ export function SocketProvider({children}){
                 if(response.status === 201 || response.status === 200){
                     console.log("inside state")
                     console.log(response.data.data.data);
+                    let config3 = {
+                        method: 'get',
+                        url: `${config.backendURL}/api/v1/payment/all/momo?startingDate=${from}&endingDate=${to}`,
+                        headers: { }
+                    };
+
+                    axios(config3)
+                        .then(function (response) {
+                            if(response.status === 200 || response.status === 201){
+                                setPayedByMomo({...response.data.data})
+                            }
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    let config2 = {
+                        method: 'get',
+                        url: `${config.backendURL}/api/v1/payment/all/cash?startingDate=${from}&endingDate=${to}`,
+                        headers: { }
+                    };
+
+                    axios(config2)
+                        .then(function (response) {
+                            if(response.status === 200 || response.status === 201){
+                                setPayedByCash({...response.data.data})
+                            }
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+
 
                     return {payload: [...response.data.data.data], status: config.status.DONE}
                 }
@@ -188,7 +222,7 @@ export function SocketProvider({children}){
 
     return (
         <SocketContext.Provider value={{exitCar,setExitCar,
-            entranceCar, setEntranceCar,elapsedTime, setElapsedTime,allCars, carsIn,carsInRange}}>
+            entranceCar, setEntranceCar,elapsedTime, setElapsedTime,allCars, carsIn,carsInRange,payedByCash, payedByMomo}}>
             {children}
         </SocketContext.Provider>
     )

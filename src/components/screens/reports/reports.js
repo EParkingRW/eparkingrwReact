@@ -11,7 +11,7 @@ const Reports = () => {
     const fromDateRef = useRef(undefined);
     const toDateRef = useRef(undefined);
     const [cars, setCars] = useState([])
-    const {carsInRange} = useContext(SocketContext)
+    const {carsInRange,payedByCash, payedByMomo} = useContext(SocketContext)
 
 
     function handleChange(){
@@ -71,9 +71,9 @@ const Reports = () => {
                                     <div className={"col-12 col-md-6 col-lg-3 " + classes.cardColumn}>
                                         <div className="card border rounded">
                                             <div className={"card-body " + classes.vehicleInCardBody}>
-                                                <p className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center card-text " + classes.vehicleInValue}>2300 RWF</p>
+                                                <p className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center card-text " + classes.vehicleInValue}>{payedByCash.count} </p>
                                                 <h4 className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center card-title " + classes.vehicleInText}>
-                                                    in cash</h4>
+                                                    pay in cash</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -82,9 +82,9 @@ const Reports = () => {
                                             <div className={"card-body " + classes.totalClientsCardBody}
                                             >
                                                 <p className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center card-text " + classes.totalClientsValue}>
-                                                    <strong>43000 rwf</strong></p>
+                                                    <strong>{payedByMomo.count}</strong></p>
                                                 <h4 className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center card-title " + classes.totalClientsText}>
-                                                    on Mono</h4>
+                                                    pay using Mono</h4>
                                             </div>
                                         </div>
                                     </div>

@@ -6,6 +6,9 @@ import React from "react";
 import userContext from "../../context/UserContext";
 const DashContent = () => {
     const {user} = useContext(userContext)
+    if(user.user == null){
+        return;
+    }
     return(
         <Fragment>
             <main className={"page "+classes.page} >

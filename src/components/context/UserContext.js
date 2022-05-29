@@ -15,6 +15,24 @@ export function UserProvider({children}){
 
 
 
+    async function handleSignOut (){
+        let configL = {
+            method: 'post',
+            url: config.backendURL+"/api/v1/auth/logout",
+            headers: {
+                'Authorization': config.constants.Bearer+user.token,
+                'Content-Type': 'application/json'
+            }
+        };
+        return axios(configL).then(reponse => {
+            setUser({token: null,user: null});
+
+            return reponse.data;
+        }).catch(error => {
+            setUser({token: null,user: null});
+            return error
+        })
+    }
     async function handleSignUp(data){
         console.log(JSON.stringify({...data}));
         setUserCreation({...userCreation, status: config.status.LOADING});
@@ -135,7 +153,7 @@ export function UserProvider({children}){
     }
 
     return (
-        <UserContext.Provider value={{user, setUser, handleResetPassword, handleForgotPassword, handleSignUp,handleLogin,userCreation, setUserCreation}}>
+        <UserContext.Provider value={{user, setUser,handleSignOut, handleResetPassword, handleForgotPassword, handleSignUp,handleLogin,userCreation, setUserCreation}}>
             {children}
         </UserContext.Provider>
     )

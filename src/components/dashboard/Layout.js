@@ -1,6 +1,6 @@
 import React, {Fragment, useContext, useState} from "react";
 import "./dasboardlayout.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import userContext from "../context/UserContext";
 import logo from "../../asserts/logo.svg"
 import config from "../../config";
@@ -26,7 +26,8 @@ export default function Layout({children}) {
     const [headerpd, setHeaderpd] = useState("body-pd");
     const [isShowing, setShowing] = useState(true);
     const [activeLink, setActiveLink] = useState(null);
-    const {user} = useContext(userContext);
+    const {user,handleSignOut} = useContext(userContext);
+    let navigate = useNavigate() ;
 
 
     const [show, setShow] = useState(false);
@@ -49,6 +50,13 @@ export default function Layout({children}) {
             setbodypd("")
             setHeaderpd("")
         }
+    }
+
+    function handleLogout(event) {
+        event.preventDefault();
+        handleSignOut().then(response => {
+            navigate('/', { replace: true })
+        });
     }
 
     return (<Fragment>
@@ -115,6 +123,9 @@ export default function Layout({children}) {
                         <Users/>
                     </Modal.Body>
                     <Modal.Footer>
+                        <Button variant="primary" onClick={handleLogout}>
+                            Logout
+                        </Button>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>

@@ -16,28 +16,26 @@ export default function Entrance(){
     return (
         <div className={"container " + classes.containerCustom}>
             <div className="row">
-                <div className={"col-sm-12 col-md-6 col-lg-3 " + classes.customCss2}>
-                    <div className="card border rounded">
-                        <div className={"card-body align-items-lg-center " + classes.topCardBody}
-                        >
-                            <div className="row">
-                                <div className="col">
-                                    <h4 className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center "+classes.gateIsOpen}
-                                        >Gate
-                                        is open</h4>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col d-inline-flex justify-content-lg-center">
-                                    <button className={"btn btn-primary " + classes.closeGate} type="button"
-                                            >Close
-                                        gate
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/*<div className={"col-sm-12 col-md-6 col-lg-3 " + classes.customCss2}>*/}
+                {/*    <div className="card border rounded">*/}
+                {/*        <div className={"card-body align-items-lg-center " + classes.topCardBody}*/}
+                {/*        >*/}
+                {/*            <div className="row">*/}
+                {/*                <div className="col">*/}
+                {/*                    <h4 className={"text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center "+classes.gateIsOpen}*/}
+                {/*                        >Gate is open</h4>*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*            <div className="row">*/}
+                {/*                <div className="col d-inline-flex justify-content-lg-center">*/}
+                {/*                    <button className={"btn btn-primary " + classes.closeGate} type="button">*/}
+                {/*                        Close gate*/}
+                {/*                    </button>*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className={"col-sm-12 col-md-6 col-lg-3 " + classes.colOfSlots} >
                     <div className="card border rounded">
                         <div className={"card-body "+classes.slotsCardBody}>
@@ -82,47 +80,47 @@ export default function Entrance(){
 
                 </div>
                 <div className="col-md-6">
-                    <div className={"card "+classes.recentCarsCard}>
-                        <div className="card-header">
-                            <div className="row">
-                                <div className="col">
-                                    <h4>Recent cars</h4>
-                                </div>
-                                <div className="col">
-                                    <h6 className={"text-end "+classes.entranceTimeText}>Entrance time</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-body">
-                            {
+                    {/*<div className={"card "+classes.recentCarsCard}>*/}
+                    {/*    <div className="card-header">*/}
+                    {/*        <div className="row">*/}
+                    {/*            <div className="col">*/}
+                    {/*                <h4>Recent cars</h4>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <h6 className={"text-end "+classes.entranceTimeText}>Entrance time</h6>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="card-body">*/}
+                    {/*        {*/}
 
-                            }
-                            <div className={"row "+classes.recentCarsPlatteNumberRow}>
-                                <div className="col">
-                                    <p className={classes.recentCarsValue}>RAE 123 F</p>
-                                </div>
-                                <div className="col">
-                                    <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>
-                                </div>
-                            </div>
-                            <div className={"row "+classes.recentCarsPlatteNumberRow}>
-                                <div className="col">
-                                    <p className={classes.recentCarsValue}>RAE 123 F</p>
-                                </div>
-                                <div className="col">
-                                    <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>
-                                </div>
-                            </div>
-                            <div className={"row "+classes.recentCarsPlatteNumberRow}>
-                                <div className="col">
-                                    <p className={classes.recentCarsValue}>RAE 123 F</p>
-                                </div>
-                                <div className="col">
-                                    <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {/*        }*/}
+                    {/*        <div className={"row "+classes.recentCarsPlatteNumberRow}>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={classes.recentCarsValue}>RAE 123 F</p>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={"row "+classes.recentCarsPlatteNumberRow}>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={classes.recentCarsValue}>RAE 123 F</p>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={"row "+classes.recentCarsPlatteNumberRow}>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={classes.recentCarsValue}>RAE 123 F</p>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="col">*/}
+                    {/*                <p className={"text-end "+classes.recentCarsEntranceTime}>3: 00 pm</p>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>
