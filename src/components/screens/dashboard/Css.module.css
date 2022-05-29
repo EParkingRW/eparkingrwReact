@@ -1,0 +1,15 @@
+.page{
+    min-height: 100%;
+}
+.mainRow{
+    margin-right: 0px;margin-left: 0px;
+}
+.mainCol{
+    padding-right: 0px;padding-left: 0px;
+}
+.cardBodyRow{
+    margin-top: -24px;
+}
+.cardBodyCol{
+    margin-top: 22px;
+}

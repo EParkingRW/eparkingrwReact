@@ -14,6 +14,8 @@ export function SocketProvider({children}){
     const [elapsedTime, setElapsedTime] = useState(0);
     const [allCars, setAllCars] = useState([])
     const [carsIn, setCarsIn] = useState([])
+    const [payedByCash, setPayedByCash] = useState([]);
+    const [payedByMomo, setPayedByMomo] = useState([])
     function addMoreField(each) {
         let EntranceDateFormed = null;
         let EntranceTime = null;

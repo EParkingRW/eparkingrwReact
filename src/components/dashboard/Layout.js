@@ -2,7 +2,22 @@ import React, {Fragment, useContext, useState} from "react";
 import "./dasboardlayout.css"
 import {Link} from "react-router-dom";
 import userContext from "../context/UserContext";
+import logo from "../../asserts/logo.svg"
 import config from "../../config";
+import {
+    faListAlt,
+    faUser,
+    faStar,
+    faDashboard,
+    faCarTunnel,
+    faCar,
+    faParking,
+    faSignal,
+    faUserAlt
+} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Button, Modal} from "react-bootstrap";
+import Users from "../screens/dashboard/Users";
 
 export default function Layout({children}) {
     const [toggle, setToggle] = useState("bx-x");
@@ -12,6 +27,15 @@ export default function Layout({children}) {
     const [isShowing, setShowing] = useState(true);
     const [activeLink, setActiveLink] = useState(null);
     const {user} = useContext(userContext);
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+
     const toggling = () => {
         setShowing((i) => !i);
         if (isShowing) {
@@ -27,42 +51,52 @@ export default function Layout({children}) {
         }
     }
 
-    return (<div id="sidemenu" className={"mainDashboard"}>
+    return (<Fragment>
+        <div id="sidemenu" className={"mainDashboard"}>
             <header id="header" className={"header " + headerpd}>
-                <div id="header_toggle-1" className={"header_toggle " + toggle}><i onClick={() => {
-                    toggling();
-                }}
-                                                                                   className="fa fa-star bx bx-menu"
-                                                                                   id="header-toggle"></i></div>
-                <div className="header_img"><img src="../assets/img/hczKIze.jpg"/></div>
+                <div id="header_toggle-1" className={"header_toggle " + toggle}>
+                    <FontAwesomeIcon onClick={() => {toggling();}} icon={faListAlt}  id="header-toggle" color="yellow"/>
+                </div>
+                <div className="header_img">
+                        <FontAwesomeIcon onClick={handleShow} size={"2x"} icon={faUser} color="yellow" />
+                </div>
             </header>
             <div id="nav-bar" className={"l-navbar " + nav}>
                 <nav className={"nav "}>
                     <div><a onClick={() => {
                         toggling();
-                    }} id="header_toggle-2" className="nav_logo header_toggle" href="#"><i
-                        className="fa fa-star bx bx-layer nav_logo-icon"></i><span
-                        className="nav_logo-name">Sidemenu</span></a>
-                        <div className="nav_list"><Link className={"nav_link active"} to={"/dashboard"}><i
-                            className="fa fa-star bx bx-grid-alt nav_icon"></i><span
+                    }} id="header_toggle-2" className="nav_logo header_toggle" href="#">
+
+                        <img height={"70%"} src={logo} alt={""}/>
+                        <span
+                        className="nav_logo-name">E-parking</span></a>
+                        <div className="nav_list">
+                            <Link className={"nav_link active"} to={"/dashboard"}>
+                                <FontAwesomeIcon icon={faDashboard} color="yellow" />
+                            <span
                             className="nav_name">Dashboard</span></Link><Link className={"nav_link "}
-                                                                              to={"/entrance"}><i
-                            className="fa fa-star bx bx-user nav_icon"></i><span
+                                                                              to={"/entrance"}>
+                            <FontAwesomeIcon icon={faCarTunnel} color="yellow" /><span
                             className="nav_name">Entrance</span></Link><Link
-                            className="nav_link" to="/exit"><i
-                            className="fa fa-star bx bx-message-square-detail nav_icon"></i><span
-                            className="nav_name">Exit</span></Link><Link className={"nav_link "}
-                                                                         to="/space"><i
-                            className="fa fa-star bx bx-bookmark nav_icon"></i><span
+                            className="nav_link" to="/exit">
+                            <FontAwesomeIcon icon={faCar} color="yellow" />
+                            <span
+                            className="nav_name">Exit</span></Link>
+                            <Link className={"nav_link "}
+                                                                         to="/space">
+                            <FontAwesomeIcon icon={faParking} color="yellow" />
+                            <span
                             className="nav_name">Space</span></Link>
                             {/*{*/}
                             {/*    user.token!==null && (user.user.roleId !== config.roles.normal)?(*/}
                                     <Fragment>
-                                    <Link className={"nav_link "} to="/reports"><i
-                                        className="fa fa-star bx bx-folder nav_icon"></i><span
+                                    <Link className={"nav_link "} to="/reports">
+                                        <FontAwesomeIcon icon={faSignal} color="yellow" />
+                                        <span
                                         className="nav_name">Reports</span></Link>
-                                    <Link className={"nav_link "} to="/signup"><i
-                                        className="fa fa-star bx bx-folder nav_icon"></i><span
+                                    <Link className={"nav_link "} to="/signup">
+                                        <FontAwesomeIcon icon={faUserAlt} color="yellow"/>
+                                        <span
                                         className="nav_name">New user</span></Link>
                                 </Fragment>)
                             {/*        :""*/}
@@ -72,7 +106,22 @@ export default function Layout({children}) {
                     </div>
                 </nav>
             </div>
-            <div className={"" + bodypd}>{children}</div>
+            <div className={"" + bodypd}>{children}
+                <Modal className={"w-100"} show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>your profile</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className={"w-100"}>
+                        <Users/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
         </div>
+        </Fragment>
     )
 }

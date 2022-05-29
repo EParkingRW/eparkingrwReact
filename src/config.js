@@ -1,5 +1,6 @@
 const settings = {
     backendURLLocal: "http://localhost:2023",
+    backendTemporary: "https://e-parking-be.herokuapp.com",
     backendURLRemote:"https://e-parking-be.herokuapp.com",
 
 }
