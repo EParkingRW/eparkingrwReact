@@ -63,10 +63,10 @@ export default function Layout({children}) {
         <div id="sidemenu" className={"mainDashboard"}>
             <header id="header" className={"header " + headerpd}>
                 <div id="header_toggle-1" className={"header_toggle " + toggle}>
-                    <FontAwesomeIcon onClick={() => {toggling();}} icon={faListAlt}  id="header-toggle" color="yellow"/>
+                    <FontAwesomeIcon onClick={() => {toggling();}} icon={faListAlt}  id="header-toggle" color="#da7427"/>
                 </div>
                 <div className="header_img">
-                        <FontAwesomeIcon onClick={handleShow} size={"2x"} icon={faUser} color="yellow" />
+                        <FontAwesomeIcon onClick={handleShow} size={"2x"} icon={faUser} color="#da7427" />
                 </div>
             </header>
             <div id="nav-bar" className={"l-navbar " + nav}>
@@ -80,30 +80,30 @@ export default function Layout({children}) {
                         className="nav_logo-name">E-parking</span></a>
                         <div className="nav_list">
                             <Link className={"nav_link active"} to={"/dashboard"}>
-                                <FontAwesomeIcon icon={faDashboard} color="yellow" />
+                                <FontAwesomeIcon icon={faDashboard} color="#da7427" />
                             <span
                             className="nav_name">Dashboard</span></Link><Link className={"nav_link "}
                                                                               to={"/entrance"}>
-                            <FontAwesomeIcon icon={faCarTunnel} color="yellow" /><span
+                            <FontAwesomeIcon icon={faCarTunnel} color="#da7427" /><span
                             className="nav_name">Entrance</span></Link><Link
                             className="nav_link" to="/exit">
-                            <FontAwesomeIcon icon={faCar} color="yellow" />
+                            <FontAwesomeIcon icon={faCar} color="#da7427" />
                             <span
                             className="nav_name">Exit</span></Link>
                             <Link className={"nav_link "}
                                                                          to="/space">
-                            <FontAwesomeIcon icon={faParking} color="yellow" />
+                            <FontAwesomeIcon icon={faParking} color="#da7427" />
                             <span
                             className="nav_name">Space</span></Link>
                             {
                                 user.user!==null && (user.user.role.title !== "normal")?(
                                     <Fragment>
                                     <Link className={"nav_link "} to="/reports">
-                                        <FontAwesomeIcon icon={faSignal} color="yellow" />
+                                        <FontAwesomeIcon icon={faSignal} color="#da7427" />
                                         <span
                                         className="nav_name">Reports</span></Link>
                                     <Link className={"nav_link "} to="/signup">
-                                        <FontAwesomeIcon icon={faUserAlt} color="yellow"/>
+                                        <FontAwesomeIcon icon={faUserAlt} color="#da7427"/>
                                         <span
                                         className="nav_name">New user</span></Link>
                                 </Fragment>)

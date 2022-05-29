@@ -7,10 +7,10 @@ export default function Home(){
         <div>
             <div className={"container"}>
                 <div className={"row pt-5"}>
-                    <div className={"col"}>
+                    <div className={"col-12 col-md-6"}>
                         <img src={logo} align={""}/>
                     </div>
-                    <div className={"col"}>
+                    <div className={"col-12 col-md-6"}>
                         <p className={"d-flex justify-content-center align-items-center "+classes.fontSize20}>welcome on e-parking system</p>
                         <div className={"d-flex justify-content-center align-items-center"}>
                             <Button className={"btn-light "}><Link to={"/login"}>Login</Link></Button>
