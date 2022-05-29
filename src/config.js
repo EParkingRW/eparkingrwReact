@@ -20,7 +20,7 @@ const status = {
     NOTHING: 4
 };
 export default {
-    backendURL:settings.backendURLLocal,
+    backendURL:settings.backendURLRemote,
     status,
     paymentRate:23,
     minimumMoneyToPay:300,
