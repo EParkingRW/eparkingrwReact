@@ -109,6 +109,7 @@ export function UserProvider({children}){
     }
 
     async function handleLogin(data){
+        let token;
         return axios.post(config.backendURL+"/api/v1/auth/login", {...data})
             .then(function (response) {
                 if(response.status === 201 || response.status === 200){
@@ -122,6 +123,7 @@ export function UserProvider({children}){
                             'Content-Type': 'application/json'
                         }
                     };
+                    token= response.data.data.token;
 
 
 
@@ -130,7 +132,7 @@ export function UserProvider({children}){
                     return axios(configL).then(response => {
                         console.log("profile");
                         console.log(response.data.data.profile)
-                        setUser({...user,user:response.data.data.profile})
+                        setUser({...user,token:token,user:response.data.data.profile})
                         return {payload: {...response.data}, status: config.status.DONE}
                     }).catch(error => {
                         console.log(error)

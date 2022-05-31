@@ -1,6 +1,6 @@
 import classes from "../../../components/screens/exit/ExitCss.module.css";
 import PayByCard from "../../../components/screens/exit/PayByCard";
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 import {convertFromStringToDate, validatePhoneNumber} from "../../../utils/functions";
 import config from "../../../config";
 
@@ -8,11 +8,32 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                       showPayByCard, exitCar,handlePay}){
     const [mobileNumber, setMobileNumber] = useState("078");
     const [incorrectTelMessage, setIncorrectTelMessage] = useState(null);
+    const [message,setMessage] = useState(null);
+    const [hidePay, setHidePay] = useState(false);
+    useEffect(() => {
+        setHidePay(false)
+        setMessage(null)
+    },[exitCar])
     let moneyToPay = config.minimumMoneyToPay;
     function handlePayByMomo() {
         if(validatePhoneNumber(mobileNumber)){
             console.log("correct")
-            handlePay({payBy:"momo",amount:moneyToPay, phone_number:mobileNumber})
+            setMessage(<div className="alert alert-primary" role="alert">
+                loading
+            </div>);
+            handlePay({payBy:"momo",amount:moneyToPay, phone_number:mobileNumber}).then(response => {
+                if(response.status === config.status.DONE){
+                    setMessage(<div className="alert alert-success" role="alert">
+                        success
+                    </div>);
+                    setHidePay(true);
+                }else {
+                    setMessage(<div className="alert alert-danger" role="alert">
+                        something wrong happen
+                    </div>);
+                }
+
+            })
         }
         else {
             console.log("not correct")
@@ -20,7 +41,22 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
 
     }
     function handlePayByCash(){
-        handlePay({payBy:"cash",amount:moneyToPay})
+        setMessage(<div className="alert alert-primary" role="alert">
+            loading
+        </div>);
+        handlePay({payBy:"cash",amount:moneyToPay}).then(response => {
+            if(response.status === config.status.DONE){
+                setMessage(<div className="alert alert-success" role="alert">
+                    pay by cash success
+                </div>);
+                setHidePay(true);
+            }else {
+                setMessage(<div className="alert alert-danger" role="alert">
+                    error
+                </div>);
+            }
+
+        })
     }
     const handleMobileNumberChange = (event) => {
         if(validatePhoneNumber(event.target.value)){
@@ -62,7 +98,8 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                     </div>
                                     <h1 className={classes.payByText}>Pay
                                         by</h1>
-                                    <div className="row">
+                                    {message}
+                                    {hidePay?"": <div className="row">
                                         <div className="col justify-content-xxl-center align-items-xxl-center">
                                             <div className={"card "+classes.modeOfPaymentCard}>
                                                 <div
@@ -76,10 +113,10 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
                                                             <button onClick={() => {setShowPayByCash((i)=>!i)}} className={"btn btn-primary " + classes.cashText} type="button">Cash
                                                             </button>
                                                         </div>
-                                                        <div className="col">
-                                                            <button onClick={() => {setShowPayByCard((i)=>!i)}} className={"btn btn-primary "+classes.bankButton} type="button">Bank
-                                                            </button>
-                                                        </div>
+                                                        {/*<div className="col">*/}
+                                                        {/*    <button onClick={() => {setShowPayByCard((i)=>!i)}} className={"btn btn-primary "+classes.bankButton} type="button">Bank*/}
+                                                        {/*    </button>*/}
+                                                        {/*</div>*/}
                                                     </div>
 
 
@@ -131,7 +168,7 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> }
                                 </div>
                                 <div className="col">
                                     <div className="row">

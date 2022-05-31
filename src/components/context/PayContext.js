@@ -12,11 +12,11 @@ export function PayProvider({children}){
 
 
 
-    const  handlePay =(data) =>{
+    async function handlePay(data){
         console.log(data)
         if(user.token === null){
             console.log("token is null")
-            return
+            return {payload:null, status:config.status.ERROR}
         }
         if(data.payBy === "momo"){
             console.log(config.constants.Bearer+user.token)
@@ -35,12 +35,14 @@ export function PayProvider({children}){
                 data : dataNew
             };
 
-            axios(configL)
+            return axios(configL)
                 .then(function (response) {
                     console.log(JSON.stringify(response.data));
+                    return {payload:response.data, status:config.status.DONE}
                 })
                 .catch(function (error) {
                     console.log(error);
+                    return {payload:error, status:config.status.ERROR}
                 });
         }
         else if(data.payBy === "cash"){
@@ -58,14 +60,17 @@ export function PayProvider({children}){
                 data : dataNew
             };
 
-            axios(configL)
+            return axios(configL)
                 .then(function (response) {
                     console.log(JSON.stringify(response.data));
+                    return {payload:response.data, status:config.status.DONE}
                 })
                 .catch(function (error) {
                     console.log(error);
+                    return {payload:error, status:config.status.ERROR}
                 });
         }
+        return {payload:"", status:config.status.ERROR}
 
     }
 

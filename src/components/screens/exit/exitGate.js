@@ -13,7 +13,7 @@ export default function ExitGate(){
     const [showPayByCash, setShowPayByCash] = useState(false);
     const [showPayByCard, setShowPayByCard] = useState(false);
     const [currentPayment, setCurrentPayment] = useState("none");
-    const {exitCar,carsIn} = useContext(SocketContext);
+    const {exitCar,carsIn, setExitCar} = useContext(SocketContext);
     const {handlePay} = useContext(PayContext);
 
     useEffect(() => {
@@ -76,7 +76,7 @@ export default function ExitGate(){
                 <CarAtGate handlePay={handlePay} showPayByMomo={showPayByMomo} setShowPayByMomo={setShowPayByMomo}
                            showPayByCash={showPayByCash} setShowPayByCash={setShowPayByCash}
                            showPayByCard={showPayByCard} setShowPayByCard={setShowPayByCard}
-                           exitCar={exitCar}/>
+                           exitCar={exitCar} setExitCar={setExitCar}/>
             </div>
         </Fragment>
 
