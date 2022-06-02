@@ -26,7 +26,7 @@ export default function Login(){
     });
 
     const handleSubmit = () =>{
-        handleLogin({login:login.current.value, password: password.current.value}).then((response) => {
+        handleLogin({email:login.current.value, password: password.current.value}).then((response) => {
             if(response.status === config.status.ERROR){
                 try {
                     setMessagePart(<div className="alert alert-danger" role="alert">
