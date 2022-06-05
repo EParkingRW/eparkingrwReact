@@ -29,9 +29,16 @@ export default function Login(){
         handleLogin({email:login.current.value, password: password.current.value}).then((response) => {
             if(response.status === config.status.ERROR){
                 try {
-                    setMessagePart(<div className="alert alert-danger" role="alert">
-                        {response.payload.error.message}
-                    </div>)
+                    if(response.payload === undefined||response.payload.error === undefined ||response.payload.error.message === undefined ){
+                        setMessagePart(<div className="alert alert-danger" role="alert">
+                            error: {JSON.stringify(response.payload)}
+                        </div>)
+                    }
+                    else {
+                        setMessagePart(<div className="alert alert-danger" role="alert">
+                            error: {response.payload.error.message}
+                        </div>)
+                    }
                 }catch (e) {
                     console.log(e)
                 }

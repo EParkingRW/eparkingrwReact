@@ -15,6 +15,7 @@ export default function ExitGate(){
     const [currentPayment, setCurrentPayment] = useState("none");
     const {exitCar,carsIn, setExitCar} = useContext(SocketContext);
     const {handlePay} = useContext(PayContext);
+    const [hidePay, setHidePay] = useState(false);
 
     useEffect(() => {
         setPageTitle(pageTitle);
@@ -76,7 +77,7 @@ export default function ExitGate(){
                 <CarAtGate handlePay={handlePay} showPayByMomo={showPayByMomo} setShowPayByMomo={setShowPayByMomo}
                            showPayByCash={showPayByCash} setShowPayByCash={setShowPayByCash}
                            showPayByCard={showPayByCard} setShowPayByCard={setShowPayByCard}
-                           exitCar={exitCar} setExitCar={setExitCar}/>
+                           exitCar={exitCar} setExitCar={setExitCar} hidePay={hidePay} setHidePay={setHidePay}/>
             </div>
         </Fragment>
 
