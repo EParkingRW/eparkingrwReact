@@ -1,19 +1,34 @@
 import classes from "../../../components/screens/exit/ExitCss.module.css";
 import PayByCard from "../../../components/screens/exit/PayByCard";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {convertFromStringToDate, validatePhoneNumber} from "../../../utils/functions";
 import config from "../../../config";
+import SocketContext from "../../context/socket";
 
 export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByMomo,setShowPayByCard,showPayByCash,
-                                      showPayByCard, exitCar,handlePay}){
+                                      showPayByCard, exitCar,handlePay, hidePay, setHidePay}){
     const [mobileNumber, setMobileNumber] = useState("078");
     const [incorrectTelMessage, setIncorrectTelMessage] = useState(null);
     const [message,setMessage] = useState(null);
-    const [hidePay, setHidePay] = useState(false);
+    const {lastPaymentStatus} = useContext(SocketContext)
+
     useEffect(() => {
         setHidePay(false)
         setMessage(null)
     },[exitCar])
+    useEffect(() => {
+        if(lastPaymentStatus !== null){
+            if(lastPaymentStatus.status === 200 || lastPaymentStatus.status === 201){
+                setMessage(<div className="alert alert-success" role="alert">
+                    payment complete successful
+                </div>)
+            }else{
+                setMessage(<div className="alert alert-danger" role="alert">
+                    payment fail
+                </div>)
+            }
+        }
+    },[lastPaymentStatus])
     let moneyToPay = config.minimumMoneyToPay;
     function handlePayByMomo() {
         if(validatePhoneNumber(mobileNumber)){
@@ -24,7 +39,7 @@ export default function CarAtGate({setShowPayByCash, setShowPayByMomo,showPayByM
             handlePay({payBy:"momo",amount:moneyToPay, phone_number:mobileNumber}).then(response => {
                 if(response.status === config.status.DONE){
                     setMessage(<div className="alert alert-success" role="alert">
-                        success
+                        request send you will be redirected shortly
                     </div>);
                     setHidePay(true);
                 }else {

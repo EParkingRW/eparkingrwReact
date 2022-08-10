@@ -43,7 +43,7 @@ export function PayProvider({children}){
         if(data.payBy === "momo"){
             console.log(config.constants.Bearer+user.token)
             let dataNew = JSON.stringify({
-                "amount": data.amount,
+                "amount": data.amount.toString(),
                 "phone_number": data.phone_number
             });
 

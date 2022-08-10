@@ -21,8 +21,11 @@ const status = {
     NOTHING: 4
 };
 export default {
+<<<<<<< HEAD
     // arduinoURL: "http://192.168.1.100/5/on",
     arduinoURL: "http://192.168.54.132/5/on",
+=======
+>>>>>>> b0177df9bff9e8bf93740f029eeabfa109c14c8d
     backendURL:settings.backendURLLocal,
     status,
     paymentRate:23,

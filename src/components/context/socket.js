@@ -15,7 +15,8 @@ export function SocketProvider({children}){
     const [allCars, setAllCars] = useState([])
     const [carsIn, setCarsIn] = useState([])
     const [payedByCash, setPayedByCash] = useState({});
-    const [payedByMomo, setPayedByMomo] = useState({})
+    const [payedByMomo, setPayedByMomo] = useState({});
+    const [lastPaymentStatus, setLastPaymentStatus] = useState({})
     function addMoreField(each) {
         let EntranceDateFormed = null;
         let EntranceTime = null;
@@ -219,9 +220,23 @@ export function SocketProvider({children}){
 
 
     },[])
+    useEffect(() => {
+        // const socket = io(config.backendURL);
+        socket.on("connection", () => console.log("connected"));
+        socket.on("disconnect", () => console.log("disconnected"));
+        socket.on("payment", (data) => {
+            console.log(data);
+            setLastPaymentStatus(data);
+        });
+        // const date = convertFromStringToDate("2022-05-12T12:30:41.813Z")
+        // console.log("date")
+        // console.log(date.getDay())
+
+
+    },[])
 
     return (
-        <SocketContext.Provider value={{exitCar,setExitCar,
+        <SocketContext.Provider value={{exitCar,setExitCar,lastPaymentStatus,
             entranceCar, setEntranceCar,elapsedTime, setElapsedTime,allCars, carsIn,carsInRange,payedByCash, payedByMomo}}>
             {children}
         </SocketContext.Provider>
