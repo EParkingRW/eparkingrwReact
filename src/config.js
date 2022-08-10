@@ -1,7 +1,8 @@
 const settings = {
-    backendURLLocal: "http://localhost:2023",
+    backendURLLocal: "http://localhost:2022",
     backendTemporary: "https://e-parking-be.herokuapp.com",
     backendURLRemote:"https://e-parking-be.herokuapp.com",
+    
 
 }
 const constants = {
@@ -20,7 +21,9 @@ const status = {
     NOTHING: 4
 };
 export default {
-    backendURL:settings.backendURLRemote,
+    // arduinoURL: "http://192.168.1.100/5/on",
+    arduinoURL: "http://192.168.54.132/5/on",
+    backendURL:settings.backendURLLocal,
     status,
     paymentRate:23,
     minimumMoneyToPay:300,

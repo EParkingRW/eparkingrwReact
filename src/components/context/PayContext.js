@@ -11,6 +11,28 @@ export function PayProvider({children}){
     const [userCreation, setPayCreation] = useState({status:config.status.NOTHING,payload: {}});
 
 
+    function turnGateUp(){
+        try{
+            let config1 = {
+                method: 'get',
+                url: `${config.arduinoURL}`,
+                headers: { }
+            };
+            axios(config1)
+                .then(function (response) {
+                    if(response.status === 200 || response.status === 201){
+                        console.log("complete setup");
+                    }
+    
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }catch (e) {
+            console.log(e);
+        }
+    }
+
 
     async function handlePay(data){
         console.log(data)
@@ -38,6 +60,7 @@ export function PayProvider({children}){
             return axios(configL)
                 .then(function (response) {
                     console.log(JSON.stringify(response.data));
+                    turnGateUp();
                     return {payload:response.data, status:config.status.DONE}
                 })
                 .catch(function (error) {
@@ -63,6 +86,7 @@ export function PayProvider({children}){
             return axios(configL)
                 .then(function (response) {
                     console.log(JSON.stringify(response.data));
+                    turnGateUp();
                     return {payload:response.data, status:config.status.DONE}
                 })
                 .catch(function (error) {
