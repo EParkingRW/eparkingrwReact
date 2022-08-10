@@ -118,6 +118,7 @@ const Clients = ({carsIn}) => {
                         <tr>
                             <th className={isLight?classes.light:""}>plate number</th>
                             <th className={isLight?classes.light:""}>Entrance time</th>
+                            <th className={isLight?classes.light:""}>Exit time</th>
                             <th className={isLight?classes.light:""}>Total min</th>
                             <th className={isLight?classes.light:""}>Money</th>
                             <th className={isLight?classes.light:""}></th>
@@ -136,6 +137,7 @@ const Clients = ({carsIn}) => {
                         <tr>
                             <td className={isLight?classes.light:""}><strong>plate number</strong></td>
                             <td className={isLight?classes.light:""}><strong>Entrance time</strong></td>
+                            <td className={isLight?classes.light:""}><strong>Exit time</strong></td>
                             <td className={isLight?classes.light:""}><strong>Total min</strong></td>
                             <td className={isLight?classes.light:""}><strong>Money</strong></td>
                             <td className={isLight?classes.light:""}><strong></strong></td>
@@ -200,6 +202,18 @@ const Clients = ({carsIn}) => {
                                 <div><span className={classes.tableRowUpperSpan}>{client.EntranceTime}</span></div>
                                 <div><span className={"d-none d-sm-none d-md-flex d-lg-flex "+classes.tableRowLowerSpan}
                                 >{"on "+client.EntranceDate}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div><span className={classes.tableRowUpperSpan}>{client.ExitedTime}</span></div>
+                                <div><span className={"d-none d-sm-none d-md-flex d-lg-flex "+classes.tableRowLowerSpan}
+                                >{"on "+client.ExitedDate}</span>
                                 </div>
                             </div>
                         </div>

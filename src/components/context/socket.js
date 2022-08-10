@@ -19,7 +19,9 @@ export function SocketProvider({children}){
     const [lastPaymentStatus, setLastPaymentStatus] = useState({})
     function addMoreField(each) {
         let EntranceDateFormed = null;
+        let ExitedDateFormed = null;
         let EntranceTime = null;
+        let ExitedTime = null;
         let min = null;
         let moneyToPay = null;
         let inHours = null;
@@ -40,12 +42,17 @@ export function SocketProvider({children}){
 
             EntranceDateFormed = entranceDate.getDate()+"."+(entranceDate.getMonth()+1)+"."+entranceDate.getFullYear();
             EntranceTime = entranceDate.getHours()+": "+ entranceDate.getMinutes();
+
+            ExitedDateFormed = exitedDate.getDate()+"."+(exitedDate.getMonth()+1)+"."+exitedDate.getFullYear();
+            ExitedTime = entranceDate.getHours()+": "+exitedDate.getMinutes();
         }catch (e) {
 
         }finally {
             return{
                 ...each, "EntranceTime":EntranceTime,
                 "EntranceDate":EntranceDateFormed,
+                "ExitedDate":ExitedDateFormed,
+                "ExitedTime":ExitedTime,
                 totalMin:min,
                 inHours:inHours,
                 money:moneyToPay
